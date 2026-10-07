@@ -1,0 +1,343 @@
+/* ==========================================================
+   Estilo "menú": UI plana, minimalista, inspirada en menús de juego
+   de papel crema, líneas finas y barras oscuras de título.
+   Se activa con <html data-skin="menu"> (botón UI de la cabecera).
+   Sin ese atributo (o con data-skin="neon") se ve el estilo original.
+   ========================================================== */
+
+:root[data-skin="menu"] {
+  --font: "Jost", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --display: "Jost", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --radius: 0;
+  --shadow: none;
+}
+:root[data-skin="menu"][data-theme="light"] {
+  --bg: #d3cfba; --bg-alt: #cbc7b1; --surface: #dedac7; --line: #9d9885;
+  --text: #3f3b32; --muted: #6a6556;
+  --bar: #4a463c; --bar-ink: #dcd8c4;
+  --accent: #4a463c; --accent-ink: #dcd8c4; --live: #4a463c;
+}
+:root[data-skin="menu"][data-theme="dark"] {
+  --bg: #34312a; --bg-alt: #2e2b25; --surface: #3b382f; --line: #6c6758;
+  --text: #dcd8c4; --muted: #a8a390;
+  --bar: #dcd8c4; --bar-ink: #34312a;
+  --accent: #dcd8c4; --accent-ink: #34312a; --live: #dcd8c4;
+}
+
+/* ---------- Base ---------- */
+:root[data-skin="menu"] body { letter-spacing: .01em; }
+:root[data-skin="menu"] h1,
+:root[data-skin="menu"] h2,
+:root[data-skin="menu"] h3,
+:root[data-skin="menu"] h4 { font-weight: 500; letter-spacing: .04em; text-transform: uppercase; }
+:root[data-skin="menu"] .contact-section::before { display: none; }
+:root[data-skin="menu"] .progress { height: 2px; background: var(--bar); }
+:root[data-skin="menu"] .eyebrow { color: var(--muted); letter-spacing: .16em; }
+:root[data-skin="menu"] .mini { color: var(--text); border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+
+/* ---------- Cabecera: pestañas como en un menú ---------- */
+:root[data-skin="menu"] .site-header {
+  background: var(--bg); backdrop-filter: none; -webkit-backdrop-filter: none;
+  border-bottom: 1px solid var(--line);
+}
+:root[data-skin="menu"] .site-header::after,
+:root[data-skin="menu"] .site-footer::before {
+  content: ""; position: absolute; left: 0; right: 0; height: 10px; pointer-events: none; opacity: .4;
+  background: radial-gradient(circle, var(--text) 1.2px, transparent 1.7px) 0 50% / 16px 10px repeat-x;
+}
+:root[data-skin="menu"] .site-header::after { top: 100%; }
+:root[data-skin="menu"] .site-footer { position: relative; background: var(--surface); }
+:root[data-skin="menu"] .site-footer::before { bottom: 100%; }
+:root[data-skin="menu"] .brand { color: var(--text); text-transform: uppercase; letter-spacing: .12em; font-weight: 500; font-size: 1rem; }
+:root[data-skin="menu"] .nav { align-self: stretch; }
+:root[data-skin="menu"] .nav ul { height: 100%; gap: 0; }
+:root[data-skin="menu"] .nav li { display: flex; }
+:root[data-skin="menu"] .nav a {
+  display: flex; align-items: center; padding: 0 20px; border-radius: 0;
+  text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; font-weight: 500; color: var(--muted);
+}
+:root[data-skin="menu"] .nav a {
+  background: linear-gradient(var(--bar), var(--bar)) no-repeat left bottom / 100% 0%;
+  transition: background-size .25s ease, color .25s ease;
+}
+:root[data-skin="menu"] .nav a:hover,
+:root[data-skin="menu"] .nav a.active { background-size: 100% 100%; color: var(--bar-ink); }
+:root[data-skin="menu"] .icon-btn { border-radius: 0; border-color: var(--line); }
+:root[data-skin="menu"] .icon-btn:hover { background: var(--bar); color: var(--bar-ink); border-color: var(--bar); }
+@media (max-width: 720px) {
+  :root[data-skin="menu"] .nav { align-self: auto; }
+  :root[data-skin="menu"] .nav a { padding: 14px 12px; }
+}
+
+/* ---------- Botones ---------- */
+:root[data-skin="menu"] .btn {
+  border-radius: 0; color: var(--text); border: 1px solid var(--bar);
+  background: linear-gradient(var(--bar), var(--bar)) no-repeat left center / 0% 100% transparent;
+  text-transform: uppercase; letter-spacing: .1em; font-size: .8rem; font-weight: 500;
+  transition: background-size .28s ease, color .28s ease, background-color .28s ease;
+}
+:root[data-skin="menu"] .btn:hover { background-size: 100% 100%; color: var(--bar-ink); transform: none; box-shadow: none; filter: none; }
+:root[data-skin="menu"] .btn.primary,
+:root[data-skin="menu"] .btn.primary.small { background: var(--bar); color: var(--bar-ink); border-color: var(--bar); }
+:root[data-skin="menu"] .btn.primary:hover,
+:root[data-skin="menu"] .btn.primary.small:hover { background-color: transparent; color: var(--text); box-shadow: none; }
+:root[data-skin="menu"] .btn.big { padding: 14px 24px; }
+
+/* ---------- Hero ---------- */
+:root[data-skin="menu"] .hero { min-height: 0; padding: clamp(48px, 8vw, 88px) 0 clamp(44px, 7vw, 72px); }
+:root[data-skin="menu"] .hero-name { color: var(--muted); letter-spacing: .12em; text-transform: uppercase; }
+:root[data-skin="menu"] .hero h1 { font-size: clamp(1.9rem, 5vw, 3.5rem); line-height: 1.12; max-width: 17ch; letter-spacing: .03em; }
+:root[data-skin="menu"] .rot { color: var(--bar-ink); background: var(--bar); padding: .02em .4em .1em; margin-bottom: 0; }
+:root[data-skin="menu"] .pill { border-radius: 0; border-color: var(--line); background: none; font-family: var(--font); text-transform: uppercase; letter-spacing: .1em; font-size: .72rem; }
+:root[data-skin="menu"] .pill i { border-radius: 0; background: var(--bar); animation: none; box-shadow: none; }
+
+/* Estadísticas como panel de estado */
+:root[data-skin="menu"] .hero-stats {
+  display: block; width: min(100%, 340px); margin-top: 8px;
+  border: 1px solid var(--line); background: var(--surface);
+}
+:root[data-skin="menu"] .hero-stats::before {
+  display: block; padding: 8px 16px; background: var(--bar); color: var(--bar-ink);
+  font: 500 .8rem var(--font); letter-spacing: .14em; text-transform: uppercase;
+}
+:root[data-skin="menu"][lang="es"] .hero-stats::before { content: "Estado"; }
+:root[data-skin="menu"][lang="en"] .hero-stats::before { content: "Status"; }
+:root[data-skin="menu"] .hero-stats li { flex-direction: row-reverse; justify-content: space-between; align-items: baseline; padding: 10px 16px; border-top: 1px dashed var(--line); }
+:root[data-skin="menu"] .hero-stats li:first-child { border-top: 0; }
+:root[data-skin="menu"] .hero-stats b { font: 500 1.15rem var(--font); }
+:root[data-skin="menu"] .hero-stats li > span { text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; }
+
+/* ---------- Secciones ---------- */
+:root[data-skin="menu"] .section { padding: clamp(48px, 7vw, 84px) 0; }
+:root[data-skin="menu"] .section.alt { background: var(--bg-alt); }
+:root[data-skin="menu"] .section-head { max-width: none; margin-bottom: 32px; }
+:root[data-skin="menu"] .section-head h2 { font-size: clamp(1.5rem, 3.2vw, 2.2rem); padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+:root[data-skin="menu"] .section-head .muted { max-width: 64ch; }
+
+/* ---------- Juegos: media + panel de información ---------- */
+:root[data-skin="menu"] .game { padding: 20px 0; }
+:root[data-skin="menu"] .game + .game { border-top: 0; }
+:root[data-skin="menu"] .game-grid { align-items: start; gap: 20px; }
+@media (min-width: 900px) {
+  :root[data-skin="menu"] .game-grid { grid-template-columns: 1.3fr 1fr; gap: 24px; }
+  :root[data-skin="menu"] .game.flip .game-grid { grid-template-columns: 1fr 1.3fr; }
+}
+
+/* panel de capturas */
+:root[data-skin="menu"] .media { border: 1px solid var(--line); background: var(--surface); }
+:root[data-skin="menu"] .media[data-gallery]::before {
+  display: block; padding: 8px 16px; background: var(--bar); color: var(--bar-ink);
+  font: 500 .8rem var(--font); letter-spacing: .14em; text-transform: uppercase;
+}
+:root[data-skin="menu"][lang="es"] .media[data-gallery]::before { content: "Capturas"; }
+:root[data-skin="menu"][lang="en"] .media[data-gallery]::before { content: "Screenshots"; }
+:root[data-skin="menu"] .frame {
+  margin: 12px; border-radius: 0; border: 1px solid var(--line); background: #1a1914; box-shadow: none;
+  transform: none !important; transition: none;
+}
+:root[data-skin="menu"] .frame::after { display: none; }
+:root[data-skin="menu"] .shot.on { animation: none; }
+:root[data-skin="menu"] .badge { border-radius: 0; background: var(--bar); color: var(--bar-ink); border: 0; backdrop-filter: none; font-family: var(--font); letter-spacing: .08em; text-transform: uppercase; font-size: .68rem; }
+:root[data-skin="menu"] .badge.off { opacity: .75; }
+:root[data-skin="menu"] .zoom-hint { border-radius: 0; background: var(--bar); color: var(--bar-ink); backdrop-filter: none; font-family: var(--font); text-transform: uppercase; letter-spacing: .08em; }
+:root[data-skin="menu"] .thumbs { margin: 0 12px 12px; padding: 4px 0 6px; }
+:root[data-skin="menu"] .thumbs button { border-radius: 0; border: 1px solid var(--line); opacity: .65; background: #1a1914; }
+:root[data-skin="menu"] .thumbs button:hover { transform: none; opacity: 1; }
+:root[data-skin="menu"] .thumbs button[aria-current="true"] { opacity: 1; border-color: var(--bar); outline: 2px solid var(--bar); outline-offset: 1px; }
+:root[data-skin="menu"] .stage { margin: 12px; padding: 20px 0; border-radius: 0; border: 1px solid var(--line); background: var(--bg-alt); box-shadow: none; }
+:root[data-skin="menu"] .portrait .frame { margin: 0 auto; border-radius: 6px; border: 2px solid var(--bar); box-shadow: none; }
+:root[data-skin="menu"] .portrait .badges { left: 10px; bottom: 10px; }
+
+/* panel de información: barra de título + contenido */
+:root[data-skin="menu"] .game-info { display: flex; flex-direction: column; border: 1px solid var(--line); background: var(--surface); padding-bottom: 6px; }
+:root[data-skin="menu"] .game-info h3 {
+  order: -2; margin: 0; padding: 10px 20px; font-size: 1.05rem; letter-spacing: .12em;
+  background: var(--bar); color: var(--bar-ink);
+}
+:root[data-skin="menu"] .game-info .kicker { order: -1; margin: 14px 20px 0; color: var(--muted); font-family: var(--font); letter-spacing: .12em; font-size: .72rem; }
+:root[data-skin="menu"] .game-info > :not(h3) { margin-left: 20px; margin-right: 20px; }
+:root[data-skin="menu"] .game-info .kicker { margin-left: 20px; margin-right: 20px; }
+:root[data-skin="menu"] .desc { max-width: none; font-size: 1rem; margin-top: 14px; }
+:root[data-skin="menu"] .desc.sub { color: var(--muted); }
+
+:root[data-skin="menu"] .facts { display: block; margin-top: 8px; margin-bottom: 14px; border-top: 1px solid var(--line); }
+:root[data-skin="menu"] .facts > div { display: flex; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px dashed var(--line); }
+:root[data-skin="menu"] .facts dt { font: 500 .78rem var(--font); letter-spacing: .1em; }
+:root[data-skin="menu"] .facts dd { margin: 0; text-align: right; font-weight: 500; }
+
+:root[data-skin="menu"] .wins-title { color: var(--text); margin: 6px 20px 0; padding-bottom: 6px; border-bottom: 1px solid var(--line); font-size: .8rem; letter-spacing: .14em; }
+:root[data-skin="menu"] .wins { max-width: none; gap: 0; margin-bottom: 14px; }
+:root[data-skin="menu"] .wins li {
+  position: relative; padding: 12px 0 12px 24px; border: 0; border-bottom: 1px dashed var(--line);
+  border-radius: 0; background: none;
+}
+:root[data-skin="menu"] .wins li::before { content: ""; position: absolute; left: 2px; top: 1.3em; width: 8px; height: 8px; background: var(--bar); transform: rotate(45deg); }
+:root[data-skin="menu"] .wins b { font-weight: 500; }
+:root[data-skin="menu"] .mine { max-width: none; border-radius: 0; border: 1px solid var(--bar); background: none; }
+:root[data-skin="menu"] .mine b { font-family: var(--font); letter-spacing: .12em; }
+:root[data-skin="menu"] .todo { border-radius: 0; background: none; max-width: none; border-color: var(--muted); }
+:root[data-skin="menu"] .todo.inline { max-width: 64ch; }
+:root[data-skin="menu"] .game-info .links { margin: 12px 20px 14px !important; }
+
+/* ---------- Sobre mí ---------- */
+:root[data-skin="menu"] .about-text p:first-child { font-size: 1.1rem; }
+:root[data-skin="menu"] .timeline { border-left-color: var(--line); }
+:root[data-skin="menu"] .timeline li::before { border-radius: 0; width: 10px; height: 10px; left: -6px; top: 7px; background: var(--bar); border: 0; transform: rotate(45deg); }
+:root[data-skin="menu"] .timeline time { font-family: var(--font); }
+:root[data-skin="menu"] .chips li { border-radius: 0; background: none; border-color: var(--line); font-size: .85rem; }
+:root[data-skin="menu"] .chips li.main { background: var(--bar); color: var(--bar-ink); border-color: var(--bar); }
+:root[data-skin="menu"] .langs li { border-bottom-style: dashed; }
+:root[data-skin="menu"] .duo-card { padding: 0; border-radius: 0; background: var(--surface); }
+:root[data-skin="menu"] .duo-card::before,
+:root[data-skin="menu"] .duo-card::after { display: none; }
+:root[data-skin="menu"] .duo-card:hover { transform: none; border-color: var(--line); }
+:root[data-skin="menu"] .duo-card h3 { margin: 0; padding: 10px 16px; font-size: .9rem; letter-spacing: .12em; background: var(--bar); color: var(--bar-ink); }
+:root[data-skin="menu"] .duo-card ul { padding: 14px 16px 16px; }
+:root[data-skin="menu"] .duo-card li::before { border-radius: 0; background: var(--bar); }
+
+/* ---------- Contacto ---------- */
+:root[data-skin="menu"] .contact { border: 1px solid var(--line); background: var(--surface); padding: clamp(28px, 5vw, 48px) 20px; }
+:root[data-skin="menu"] .contact h2 { font-size: clamp(1.5rem, 3.6vw, 2.4rem); }
+:root[data-skin="menu"] .contact .lead { font-size: 1.05rem; }
+:root[data-skin="menu"] .social a { text-transform: uppercase; letter-spacing: .1em; font-size: .8rem; }
+
+/* ---------- Pie ---------- */
+:root[data-skin="menu"] .site-footer a:hover { color: var(--text); text-decoration: underline; }
+
+/* ---------- Puntos laterales y visor ---------- */
+:root[data-skin="menu"] .dots a { border-radius: 0; border-color: var(--bar); }
+:root[data-skin="menu"] .dots a.active { background: var(--bar); transform: none; }
+:root[data-skin="menu"] .dots a span { border-radius: 0; background: var(--bar); color: var(--bar-ink); border: 0; font-family: var(--font); letter-spacing: .08em; text-transform: uppercase; }
+:root[data-skin="menu"] .lightbox::backdrop { background: rgba(52, 49, 42, .95); backdrop-filter: none; }
+:root[data-skin="menu"] .lightbox img { border-radius: 0; box-shadow: none; border: 1px solid #8a8574; }
+:root[data-skin="menu"] .lb-btn { border-radius: 0; }
+
+/* ---------- Entrada al hacer scroll: más sobria ---------- */
+:root[data-skin="menu"].js .reveal { transform: translateY(10px); transition-duration: .45s; }
+:root[data-skin="menu"].js .reveal.in { transform: none; }
+
+/* ==========================================================
+   ANIMACIÓN Y DINAMISMO (estilo "menú")
+   Barras que se despliegan, filas que se resaltan, cursor parpadeante.
+   Todo es CSS; se desactiva con "reducir movimiento".
+   ========================================================== */
+@keyframes menu-in    { from { opacity: 0; transform: translateX(-16px); } to { opacity: 1; transform: none; } }
+@keyframes menu-row   { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: none; } }
+@keyframes menu-blink { 50% { opacity: 0; } }
+@keyframes menu-dots  { to { background-position: -64px 50%; } }
+
+/* Fila de puntos que avanza lentamente bajo la cabecera y sobre el pie */
+:root[data-skin="menu"] .site-header::after,
+:root[data-skin="menu"] .site-footer::before { animation: menu-dots 8s linear infinite; }
+
+/* Entrada del hero, elemento a elemento */
+:root[data-skin="menu"].js .hero-inner > * { animation: menu-in .6s cubic-bezier(.2, .7, .2, 1) both; }
+:root[data-skin="menu"].js .hero-inner > :nth-child(1) { animation-delay: .05s; }
+:root[data-skin="menu"].js .hero-inner > :nth-child(2) { animation-delay: .13s; }
+:root[data-skin="menu"].js .hero-inner > :nth-child(3) { animation-delay: .21s; }
+:root[data-skin="menu"].js .hero-inner > :nth-child(4) { animation-delay: .29s; }
+:root[data-skin="menu"].js .hero-inner > :nth-child(5) { animation-delay: .37s; }
+:root[data-skin="menu"].js .hero-inner > :nth-child(6) { animation-delay: .45s; }
+
+/* Cursor parpadeante tras el nombre */
+:root[data-skin="menu"] .hero-name::after {
+  content: ""; display: inline-block; width: .55em; height: 1em; margin-left: .45em;
+  background: var(--bar); vertical-align: -.15em; animation: menu-blink 1.1s steps(1) infinite;
+}
+
+/* Barras de título que se despliegan de izquierda a derecha al entrar en pantalla */
+:root[data-skin="menu"].js .game-info h3,
+:root[data-skin="menu"].js .duo-card h3,
+:root[data-skin="menu"].js .media[data-gallery]::before {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path .6s cubic-bezier(.2, .7, .2, 1) .12s;
+}
+:root[data-skin="menu"].js .game-info.in h3,
+:root[data-skin="menu"].js .duo.in .duo-card h3,
+:root[data-skin="menu"].js .media.in[data-gallery]::before { clip-path: inset(0); }
+:root[data-skin="menu"].js .duo-card:nth-child(2) h3 { transition-delay: .24s; }
+:root[data-skin="menu"].js .duo-card:nth-child(3) h3 { transition-delay: .36s; }
+
+/* Subrayado de los títulos de sección que se dibuja */
+:root[data-skin="menu"] .section-head h2 { border-bottom: 0; position: relative; }
+:root[data-skin="menu"] .section-head h2::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line); }
+:root[data-skin="menu"].js .section-head h2::after { transform: scaleX(0); transform-origin: left; transition: transform .9s cubic-bezier(.2, .7, .2, 1) .15s; }
+:root[data-skin="menu"].js .section-head.in h2::after { transform: scaleX(1); }
+
+/* Filas (datos y retos) que entran escalonadas */
+:root[data-skin="menu"].js .game-info:not(.in) .facts > div,
+:root[data-skin="menu"].js .game-info:not(.in) .wins li { opacity: 0; }
+:root[data-skin="menu"].js .game-info.in .facts > div,
+:root[data-skin="menu"].js .game-info.in .wins li { animation: menu-row .45s cubic-bezier(.2, .7, .2, 1) both; }
+:root[data-skin="menu"].js .game-info.in .facts > div:nth-child(1) { animation-delay: .30s; }
+:root[data-skin="menu"].js .game-info.in .facts > div:nth-child(2) { animation-delay: .37s; }
+:root[data-skin="menu"].js .game-info.in .facts > div:nth-child(3) { animation-delay: .44s; }
+:root[data-skin="menu"].js .game-info.in .facts > div:nth-child(4) { animation-delay: .51s; }
+:root[data-skin="menu"].js .game-info.in .wins li:nth-child(1) { animation-delay: .55s; }
+:root[data-skin="menu"].js .game-info.in .wins li:nth-child(2) { animation-delay: .65s; }
+:root[data-skin="menu"].js .game-info.in .wins li:nth-child(3) { animation-delay: .75s; }
+
+/* Resaltado de fila al pasar el ratón, como la selección de una lista */
+:root[data-skin="menu"] .facts > div,
+:root[data-skin="menu"] .wins li,
+:root[data-skin="menu"] .langs li {
+  margin-left: -8px; margin-right: -8px; padding-left: 8px; padding-right: 8px;
+  background: linear-gradient(var(--bar), var(--bar)) no-repeat left center / 0% 100%;
+  transition: background-size .25s ease, color .25s ease;
+}
+:root[data-skin="menu"] .wins li { padding-left: 32px; }
+:root[data-skin="menu"] .wins li::before { left: 12px; transition: background-color .25s; }
+:root[data-skin="menu"] .facts > div:hover,
+:root[data-skin="menu"] .wins li:hover,
+:root[data-skin="menu"] .langs li:hover { background-size: 100% 100%; color: var(--bar-ink); }
+:root[data-skin="menu"] .facts > div:hover dt,
+:root[data-skin="menu"] .wins li:hover b,
+:root[data-skin="menu"] .langs li:hover > span { color: inherit; }
+:root[data-skin="menu"] .wins li:hover::before { background: var(--bar-ink); }
+:root[data-skin="menu"] .chips li { transition: background-color .2s, color .2s, border-color .2s; }
+:root[data-skin="menu"] .chips li:hover { background: var(--bar); color: var(--bar-ink); border-color: var(--bar); }
+:root[data-skin="menu"] .timeline li { transition: transform .25s ease; }
+:root[data-skin="menu"] .timeline li:hover { transform: translateX(6px); }
+:root[data-skin="menu"] .duo-card { transition: border-color .25s ease; }
+:root[data-skin="menu"] .duo-card:hover { border-color: var(--bar); }
+
+/* Marcas de esquina tipo visor sobre las capturas; se abren al pasar el ratón */
+:root[data-skin="menu"] .frame::before {
+  --k: #dcd8c4;
+  content: ""; position: absolute; inset: 8px; z-index: 5; pointer-events: none; opacity: .9;
+  transition: inset .3s ease;
+  background:
+    linear-gradient(var(--k), var(--k)) 0 0 / 16px 2px, linear-gradient(var(--k), var(--k)) 0 0 / 2px 16px,
+    linear-gradient(var(--k), var(--k)) 100% 0 / 16px 2px, linear-gradient(var(--k), var(--k)) 100% 0 / 2px 16px,
+    linear-gradient(var(--k), var(--k)) 0 100% / 16px 2px, linear-gradient(var(--k), var(--k)) 0 100% / 2px 16px,
+    linear-gradient(var(--k), var(--k)) 100% 100% / 16px 2px, linear-gradient(var(--k), var(--k)) 100% 100% / 2px 16px;
+  background-repeat: no-repeat;
+}
+:root[data-skin="menu"] .frame:hover::before { inset: 15px; }
+
+/* Cambio de captura con barrido en lugar de fundido */
+:root[data-skin="menu"] .shot {
+  opacity: 0; clip-path: inset(0 100% 0 0); z-index: 1;
+  transition: opacity 0s linear .65s, clip-path 0s linear .65s;
+}
+:root[data-skin="menu"] .shot.on {
+  opacity: 1; clip-path: inset(0); z-index: 2;
+  transition: clip-path .6s cubic-bezier(.65, 0, .35, 1);
+}
+
+/* Sin movimiento: todo visible y quieto */
+@media (prefers-reduced-motion: reduce) {
+  :root[data-skin="menu"] .site-header::after,
+  :root[data-skin="menu"] .site-footer::before,
+  :root[data-skin="menu"] .hero-name::after,
+  :root[data-skin="menu"].js .hero-inner > *,
+  :root[data-skin="menu"].js .game-info.in .facts > div,
+  :root[data-skin="menu"].js .game-info.in .wins li { animation: none !important; }
+  :root[data-skin="menu"].js .game-info h3,
+  :root[data-skin="menu"].js .duo-card h3,
+  :root[data-skin="menu"].js .media[data-gallery]::before { clip-path: none; transition: none; }
+  :root[data-skin="menu"].js .game-info:not(.in) .facts > div,
+  :root[data-skin="menu"].js .game-info:not(.in) .wins li { opacity: 1; }
+  :root[data-skin="menu"].js .section-head h2::after { transform: none; transition: none; }
+  :root[data-skin="menu"] .shot, :root[data-skin="menu"] .shot.on { transition: none; }
+}

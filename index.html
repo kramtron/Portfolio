@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="es" data-skin="menu" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Ajustes tempranos de idioma/tema para evitar parpadeo al cargar -->
+  <script>
+    (function () {
+      var r = document.documentElement, l, t;
+      try { l = localStorage.getItem('lang'); t = localStorage.getItem('theme'); } catch (e) {}
+      if (l !== 'es' && l !== 'en') l = (navigator.language || 'es').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
+      if (t !== 'light' && t !== 'dark') t = 'light';
+      r.lang = l;
+      r.dataset.theme = t;
+      r.classList.add('js');
+    })();
+  </script>
+
+  <title data-es="Gerard Josep Ramon Catasus · Game Designer y Developer" data-en="Gerard Josep Ramon Catasus · Game Designer & Developer">Gerard Josep Ramon Catasus · Game Designer y Developer</title>
+  <meta name="description" content="Portfolio de Gerard Josep Ramon Catasus, game designer, game developer y game director. Loop My Crank, Geometrical, Konboys y Astro Survivor."
+        data-es="Portfolio de Gerard Josep Ramon Catasus, game designer, game developer y game director. Loop My Crank, Geometrical, Konboys y Astro Survivor."
+        data-en="Portfolio of Gerard Josep Ramon Catasus, game designer, game developer and game director. Loop My Crank, Geometrical, Konboys and Astro Survivor.">
+  <meta name="theme-color" content="#0b0d11">
+  <meta property="og:title" content="Gerard Josep Ramon Catasus · Game Designer & Developer">
+  <meta property="og:description" content="Cuatro juegos diseñados y desarrollados: tres en Steam y uno en móvil.">
+  <meta property="og:type" content="website">
+  <!-- Al publicar, añade: <meta property="og:image" content="https://TU-DOMINIO/assets/og.png"> -->
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b0d11'/%3E%3Cpath d='M16 5l9.5 5.5v11L16 27l-9.5-5.5v-11z' fill='none' stroke='%23ff7a59' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%235eead4'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/skin-menu.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <div class="progress" aria-hidden="true"></div>
+  <a class="skip" href="#main"><span lang="es">Saltar al contenido</span><span lang="en">Skip to content</span></a>
+
+  <!-- ============ CABECERA ============ -->
+  <header class="site-header" id="top">
+    <div class="wrap bar">
+      <a class="brand" href="#inicio" aria-label="Gerard Catasus — inicio / home">
+        <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path d="M16 4l10 5.6v12.8L16 28 6 22.4V9.6z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="16" cy="16" r="3" fill="currentColor"/></svg>
+        <span>Gerard</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Principal">
+        <ul>
+          <li><a href="#juegos"><span lang="es">Juegos</span><span lang="en">Games</span></a></li>
+          <li><a href="#sobre-mi"><span lang="es">Sobre mí</span><span lang="en">About</span></a></li>
+          <li><a href="#contacto"><span lang="es">Contacto</span><span lang="en">Contact</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="tools">
+        <button class="icon-btn lang-btn" id="lang-toggle" type="button" aria-label="Cambiar idioma / Switch language">
+          <span lang="es">EN</span><span lang="en">ES</span>
+        </button>
+        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Cambiar tema / Toggle theme">
+          <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menú / Menu">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navegación lateral por juegos (escritorio) -->
+  <nav class="dots" id="dots" aria-label="Juegos / Games">
+    <a href="#loop-my-crank" style="--c:#ff7a59" data-for="loop-my-crank"><span>Loop My Crank</span></a>
+    <a href="#geometrical" style="--c:#5eead4" data-for="geometrical"><span>Geometrical</span></a>
+    <a href="#konboys" style="--c:#ffcf4a" data-for="konboys"><span>Konboys</span></a>
+    <a href="#astro-survivor" style="--c:#8b9bff" data-for="astro-survivor"><span>Astro Survivor</span></a>
+  </nav>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="inicio">
+
+      <div class="wrap hero-inner">
+        <p class="pill"><i></i><span lang="es">Abierto a nuevas oportunidades</span><span lang="en">Open to new opportunities</span></p>
+        <p class="eyebrow">Game Designer <i>+</i> Game Developer <i>+</i> Game Director</p>
+        <p class="hero-name">Gerard Josep Ramon Catasus</p>
+        <h1>
+          <span lang="es">Diseño y programo<br>videojuegos para</span>
+          <span lang="en">I design and build<br>video games for</span>
+          <span class="rot" id="rot" aria-live="off">
+            <span class="on">Steam</span>
+            <span>Android</span>
+          </span>
+        </h1>
+        <div class="cta">
+          <a class="btn primary" href="#juegos"><span lang="es">Ver mis juegos</span><span lang="en">See my games</span></a>
+          <a class="btn ghost" href="cv/Gerard-Catasus-CV.pdf"><span lang="es">Descargar CV</span><span lang="en">Download CV</span></a>
+        </div>
+
+        <ul class="hero-stats" aria-label="Resumen / Summary">
+          <li><b data-count="4">0</b><span><span lang="es">juegos</span><span lang="en">games</span></span></li>
+          <li><b data-count="3">0</b><span><span lang="es">en Steam</span><span lang="en">on Steam</span></span></li>
+          <li><b data-count="1">0</b><span><span lang="es">en móvil</span><span lang="en">on mobile</span></span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ JUEGOS ============ -->
+    <section class="section games" id="juegos">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="eyebrow"><span lang="es">01 · Trabajo</span><span lang="en">01 · Work</span></p>
+          <h2><span lang="es">Cuatro juegos que he diseñado y desarrollado</span><span lang="en">Four games I designed and developed</span></h2>
+          <p class="muted"><span lang="es">Tres tienen ficha en Steam y uno salió en móvil. Pulsa una captura para verla en grande.</span><span lang="en">Three have a Steam page and one shipped on mobile. Click a screenshot to view it full size.</span></p>
+        </header>
+
+        <!--
+          CAPTURAS: cada juego carga assets/games/<juego>/1.jpg … N.jpg
+          (data-gallery = carpeta, data-n = número de imágenes). La 1 es la portada.
+        -->
+
+        <!-- ───────── 01 LOOP MY CRANK ───────── -->
+        <article class="game" id="loop-my-crank" style="--c:#ff7a59">
+          <div class="game-grid">
+            <div class="media reveal" data-gallery="assets/games/loop-my-crank" data-n="7" data-name="Loop My Crank">
+              <div class="frame" role="group" aria-label="Capturas de Loop My Crank / Loop My Crank screenshots">
+                <img class="shot on" src="assets/games/loop-my-crank/1.jpg" width="1280" height="720" alt="Loop My Crank — captura 1 / screenshot 1">
+                <div class="badges"><span class="badge">Steam</span><span class="badge ok"><span lang="es">Lanzado</span><span lang="en">Released</span></span></div>
+              </div>
+              <div class="thumbs"></div>
+            </div>
+            <div class="game-info reveal">
+              <p class="kicker"><span lang="es">Clicker incremental · Pixel art · PC</span><span lang="en">Incremental clicker · Pixel art · PC</span></p>
+              <h3>Loop My Crank</h3>
+              <p class="desc"><span lang="es">Un clicker absurdo en el que, en vez de pulsar, giras manivelas. Mejora tu autoclicker, investiga en el laboratorio y encadena mejoras en un bucle de progresión infinito, con una estética industrial retro en pixel art.</span>
+                              <span lang="en">An absurd clicker where, instead of clicking, you turn cranks. Upgrade your autoclicker, research in the lab and chain upgrades into an infinite progression loop, in a retro industrial pixel-art style.</span></p>
+              <dl class="facts">
+                <div><dt><span lang="es">Rol</span><span lang="en">Role</span></dt><dd>Game design + Dev</dd></div>
+                <div><dt><span lang="es">Equipo</span><span lang="en">Team</span></dt><dd><span lang="es">2 personas</span><span lang="en">2 people</span></dd></div>
+                <div><dt><span lang="es">Lanzamiento</span><span lang="en">Release</span></dt><dd>13 / 11 / 2025</dd></div>
+              </dl>
+              <h4 class="wins-title"><span lang="es">Reto</span><span lang="en">Challenge</span></h4>
+              <ul class="wins">
+                <li><b><span lang="es">Escalar una idea nacida en una game jam</span><span lang="en">Scaling an idea born in a game jam</span></b>
+                    <span lang="es">Las ideas de jam suelen ser pequeñas y poco escalables. La escalé creando sistemas que reutilizan la mecánica principal, tan única como girar una manivela, pero que funcionan de forma secundaria dentro del bucle con contenido extra: un autolooper y un laboratorio que mejora cosas del bucle principal.</span>
+                    <span lang="en">Jam ideas tend to be small and hard to scale. I scaled it by building systems that reuse the core mechanic, as unique as turning a crank, but work in a secondary role inside the loop with extra content: an auto-looper and a lab that upgrades parts of the main loop.</span></li>
+              </ul>
+              <p class="mine"><b><span lang="es">Mi parte en el código</span><span lang="en">My part in the code</span></b>
+                <span lang="es">Desarrollé la generación automática de dinero con sus mejoras, el autolooper y el laboratorio.</span>
+                <span lang="en">I developed the automatic money generation and its upgrades, the auto-looper and the lab.</span></p>
+              <p class="links">
+                <a class="btn primary small" href="https://store.steampowered.com/app/3936880/Loop_My_Crank/" target="_blank" rel="noopener"><span lang="es">Ver en Steam ↗</span><span lang="en">View on Steam ↗</span></a>
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ───────── 02 GEOMETRICAL ───────── -->
+        <article class="game flip" id="geometrical" style="--c:#5eead4">
+          <div class="game-grid">
+            <div class="media reveal" data-gallery="assets/games/geometrical" data-n="6" data-name="Geometrical">
+              <div class="frame" role="group" aria-label="Capturas de Geometrical / Geometrical screenshots">
+                <img class="shot on" src="assets/games/geometrical/1.jpg" width="1280" height="720" alt="Geometrical — captura 1 / screenshot 1">
+                <div class="badges"><span class="badge">Steam</span><span class="badge soon"><span lang="es">Demo disponible</span><span lang="en">Demo available</span></span></div>
+              </div>
+              <div class="thumbs"></div>
+            </div>
+            <div class="game-info reveal">
+              <p class="kicker"><span lang="es">Survivors-like + incremental · Pixel art · PC</span><span lang="en">Survivors-like + incremental · Pixel art · PC</span></p>
+              <h3>Geometrical</h3>
+              <p class="desc"><span lang="es">Un híbrido de survivors-like e incremental: sobrevive a oleadas de un minuto mientras tu poder crece, elige mejoras pasivas cada día y enfréntate a un jefe cada siete días a lo largo de cinco combates. Un árbol de progresión permanente recompensa cada partida.</span>
+                              <span lang="en">A survivors-like and incremental hybrid: survive one-minute waves while your power grows, pick passive upgrades each day and face a boss every seventh day across five fights. A permanent progression tree rewards every run.</span></p>
+              <dl class="facts">
+                <div><dt><span lang="es">Rol</span><span lang="en">Role</span></dt><dd>Game design + Dev</dd></div>
+                <div><dt><span lang="es">Equipo</span><span lang="en">Team</span></dt><dd><span lang="es">En solitario</span><span lang="en">Solo</span></dd></div>
+                <div><dt><span lang="es">Estado</span><span lang="en">Status</span></dt><dd><span lang="es">Próximamente · Q4 2026</span><span lang="en">Coming soon · Q4 2026</span></dd></div>
+              </dl>
+              <h4 class="wins-title"><span lang="es">Retos</span><span lang="en">Challenges</span></h4>
+              <ul class="wins">
+                <li><b><span lang="es">Diferenciarse en un mercado saturado de survivors</span><span lang="en">Standing out in a saturated survivors market</span></b>
+                    <span lang="es">Implementé el sistema de días: cada partida se divide en días, lo que da una gran sensación de progresión dentro de cada run.</span>
+                    <span lang="en">I implemented a day system: each run is split into days, which gives a strong sense of progression within every run.</span></li>
+                <li><b><span lang="es">Mantener la dificultad en el late game</span><span lang="en">Keeping difficulty up in the late game</span></b>
+                    <span lang="es">Los inicios de cada ronda eran demasiado fáciles: muchas armas y mucho daño frente a pocos enemigos. Creé un sistema de dificultad dinámica que modifica la vida y la cantidad de enemigos según la ronda y la progresión del jugador, para mantener la sensación de reto aunque esté muy avanzado.</span>
+                    <span lang="en">The start of each round was too easy: lots of weapons and damage against few enemies. I built a dynamic difficulty system that adjusts enemy health and spawn count based on the current round and the player's progression, keeping the challenge alive even deep into the late game.</span></li>
+              </ul>
+              <p class="mine"><b><span lang="es">Mi parte</span><span lang="en">My part</span></b>
+                <span lang="es">Lo diseñé y desarrollé yo solo, de principio a fin.</span>
+                <span lang="en">I designed and developed it entirely on my own, from start to finish.</span></p>
+              <p class="links">
+                <a class="btn primary small" href="https://store.steampowered.com/app/4077900/Geometrical/" target="_blank" rel="noopener"><span lang="es">Ver en Steam ↗</span><span lang="en">View on Steam ↗</span></a>
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ───────── 03 KONBOYS ───────── -->
+        <article class="game" id="konboys" style="--c:#ffcf4a">
+          <div class="game-grid">
+            <div class="media reveal" data-gallery="assets/games/konboys" data-n="5" data-name="Konboys">
+              <div class="frame" role="group" aria-label="Capturas de Konboys / Konboys screenshots">
+                <img class="shot on" src="assets/games/konboys/1.jpg" width="1280" height="720" alt="Konboys — captura 1 / screenshot 1">
+                <div class="badges"><span class="badge">Steam</span><span class="badge soon"><span lang="es">Próximamente</span><span lang="en">Coming soon</span></span></div>
+              </div>
+              <div class="thumbs"></div>
+            </div>
+            <div class="game-info reveal">
+              <p class="kicker"><span lang="es">Cooperativo 4 jugadores · Mundo abierto · PC</span><span lang="en">4-player co-op · Open world · PC</span></p>
+              <h3>Konboys</h3>
+              <p class="desc"><span lang="es">Cooperativo para hasta 4 jugadores en primera persona: conduce vehículos y usa herramientas para reparar estaciones de señal en un mundo abierto procedural, con un humor negro que gira en torno a reciclar a tus compañeros caídos.</span>
+                              <span lang="en">A first-person co-op game for up to 4 players: drive vehicles and use tools to repair signal stations in a procedural open world, with a dark humor built around recycling your fallen teammates.</span></p>
+              <p class="desc sub"><span lang="es">Diseñé el juego completo: la idea fue evolucionando en reuniones de equipo hasta llegar a la versión actual.</span>
+                                  <span lang="en">I designed the whole game: the idea evolved through team meetings until it reached its current form.</span></p>
+              <dl class="facts">
+                <div><dt><span lang="es">Rol</span><span lang="en">Role</span></dt><dd>Game Director + Design + Dev</dd></div>
+                <div><dt><span lang="es">Equipo</span><span lang="en">Team</span></dt><dd><span lang="es">4 personas</span><span lang="en">4 people</span></dd></div>
+                <div><dt><span lang="es">Estado</span><span lang="en">Status</span></dt><dd><span lang="es">Próximamente · Early Access Q4 2026</span><span lang="en">Coming soon · Early Access Q4 2026</span></dd></div>
+              </dl>
+              <h4 class="wins-title"><span lang="es">Retos</span><span lang="en">Challenges</span></h4>
+              <ul class="wins">
+                <li><b><span lang="es">Alinear al equipo</span><span lang="en">Aligning the team</span></b>
+                    <span lang="es">Para que todos tuvieran clara la idea y trabajasen al unísono, iterábamos el diseño en reuniones y organizamos playtests semanales internos donde se probaba todo lo nuevo de cada miembro del equipo.</span>
+                    <span lang="en">To make sure everyone shared the same vision and worked in unison, we iterated the design in meetings and ran weekly internal playtests where we tried everything new from every team member.</span></li>
+                <li><b><span lang="es">Una forma original de «vender» objetos</span><span lang="en">An original way to “sell” items</span></b>
+                    <span lang="es">Priorizamos que fuera divertido. Con el lore de la empresa, obsesionada con el orden y el reciclaje, creamos una trituradora temática donde se tritura de todo: desde cajas hasta bichos o jugadores muertos.</span>
+                    <span lang="en">Fun came first. Using the company lore, obsessed with order and recycling, we built a themed shredder that grinds up everything: from crates to critters to dead players.</span></li>
+                <li><b><span lang="es">Más acciones de riesgo y recompensa</span><span lang="en">More risk-and-reward actions</span></b>
+                    <span lang="es">Revivir a un jugador de la forma normal es carísimo, pero si recoges su cuerpo y lo trituras sale muy barato, porque lo estás «reciclando». Una decisión divertida y, a la vez, funcional.</span>
+                    <span lang="en">Reviving a player the normal way is extremely expensive, but if you pick up their body and shred it, it's very cheap because you're “recycling” it. A decision that's both funny and functional.</span></li>
+              </ul>
+              <p class="mine"><b><span lang="es">Mi parte en el código</span><span lang="en">My part in the code</span></b>
+                <span lang="es">Además de diseñarlo, programé los sistemas de economía, ítems y misiones, y todo lo que forma el game loop. Sobre todo, gameplay.</span>
+                <span lang="en">On top of designing it, I programmed the economy, item and quest systems, and everything that makes up the game loop. Mostly gameplay.</span></p>
+              <p class="links">
+                <a class="btn primary small" href="https://store.steampowered.com/app/4627310/KONBOYS/" target="_blank" rel="noopener"><span lang="es">Ver en Steam ↗</span><span lang="en">View on Steam ↗</span></a>
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ───────── 04 ASTRO SURVIVOR ───────── -->
+        <article class="game flip" id="astro-survivor" style="--c:#8b9bff">
+          <div class="game-grid">
+            <div class="media portrait reveal" data-gallery="assets/games/astro-survivor" data-n="4" data-name="Astro Survivor">
+              <div class="stage">
+                <div class="frame" role="group" aria-label="Capturas de Astro Survivor / Astro Survivor screenshots">
+                  <img class="shot on" src="assets/games/astro-survivor/1.jpg" width="720" height="1280" alt="Astro Survivor — captura 1 / screenshot 1">
+                  <div class="badges"><span class="badge">Android</span><span class="badge off"><span lang="es">Retirado</span><span lang="en">Delisted</span></span></div>
+                </div>
+              </div>
+              <div class="thumbs"></div>
+            </div>
+            <div class="game-info reveal">
+              <p class="kicker"><span lang="es">Incremental · Shooter 3D · Móvil</span><span lang="en">Incremental · 3D shooter · Mobile</span></p>
+              <h3>Astro Survivor</h3>
+              <p class="desc"><span lang="es">Un incremental para móvil en el que evolucionas tu nave para llegar lo más lejos posible, en un shooter 3D de estética synthwave neón. Al subir de nivel eliges entre nuevas armas y mejoras. Publicado en Google Play; hoy está retirado de la tienda.</span>
+                              <span lang="en">A mobile incremental where you evolve your ship to get as far as possible, in a neon synthwave 3D shooter. When you level up you choose between new weapons and upgrades. Published on Google Play; it has since been removed from the store.</span></p>
+              <dl class="facts">
+                <div><dt><span lang="es">Rol</span><span lang="en">Role</span></dt><dd>Game design + Dev</dd></div>
+                <div><dt><span lang="es">Plataforma</span><span lang="en">Platform</span></dt><dd>Android</dd></div>
+                <div><dt><span lang="es">Modelo</span><span lang="en">Model</span></dt><dd>Free to play</dd></div>
+                <div><dt><span lang="es">Estado</span><span lang="en">Status</span></dt><dd><span lang="es">Retirado de Google Play</span><span lang="en">Removed from Google Play</span></dd></div>
+              </dl>
+              <h4 class="wins-title"><span lang="es">Retos</span><span lang="en">Challenges</span></h4>
+              <ul class="wins">
+                <li><b><span lang="es">Publicidad dentro del bucle de juego</span><span lang="en">Ads inside the game loop</span></b>
+                    <span lang="es">Los integré en el bucle con una estrategia free to play: ver un anuncio da ventaja frente a quien no lo ve (vidas extra o dinero extra), de modo que, en vez de jugar otra partida, el jugador puede elegir verlo.</span>
+                    <span lang="en">I built them into the loop with a free-to-play strategy: watching an ad gives an advantage over players who don't (extra lives or extra money), so instead of playing another run, the player can choose to watch it.</span></li>
+                <li><b><span lang="es">Optimización de un juego 3D</span><span lang="en">Optimizing a 3D game</span></b>
+                    <span lang="es">Para que un juego 3D funcionase con fluidez en todo tipo de dispositivos trabajé cómo funciona la iluminación y usé pools de objetos.</span>
+                    <span lang="en">To make a 3D game run smoothly on all kinds of devices I worked on how lighting works and used object pools.</span></li>
+                <li><b><span lang="es">Diseño para móvil: progresión y retención</span><span lang="en">Designing for mobile: progression &amp; retention</span></b>
+                    <span lang="es">El móvil es un mundo completamente distinto al de PC. Cambié la progresión con hitos más cortos y mayor recompensa tras cada acción acertada. Añadí recompensas diarias para mejorar la retención y el retorno, con multiplicadores por días consecutivos y premios importantes en días lejanos: animaban a entrar durante muchos días y mejoraron el ingreso diario por usuario.</span>
+                    <span lang="en">Mobile is a completely different world from PC. I reworked progression with shorter milestones and a bigger reward after each correct action. I added daily rewards to improve retention and return rate, with consecutive-day multipliers and major rewards on distant days: they encouraged players to log in over many days and improved daily revenue per user.</span></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ SOBRE MÍ ============ -->
+    <section class="section alt" id="sobre-mi">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="eyebrow"><span lang="es">02 · Sobre mí</span><span lang="en">02 · About me</span></p>
+          <h2><span lang="es">Diseño lo que programo, programo lo que diseño</span><span lang="en">I build what I design, I design what I build</span></h2>
+        </header>
+
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p><span lang="es">Soy Gerard Josep Ramon Catasus, game designer y game developer de El Vendrell, graduado en Diseño y Desarrollo de Videojuegos por el CITM. Me especializo en sistemas y gameplay: bucles centrales, progresión, balance y niveles, con Unity como herramienta principal.</span>
+               <span lang="en">I'm Gerard Josep Ramon Catasus, a game designer and game developer from El Vendrell, Spain, with a degree in Video Game Design and Development from CITM. I specialize in systems and gameplay: core loops, progression, balance and levels, with Unity as my main tool.</span></p>
+            <p><span lang="es">Trabajo con ciclos de diseño iterativos —prototipo, playtesting y ajuste con datos de jugadores— y entiendo las limitaciones técnicas porque también programo. Hoy dirijo el diseño de GameRoom3 Studio y llevo mis juegos de la idea al lanzamiento.</span>
+               <span lang="en">I work in iterative design cycles — prototype, playtest, and tune with player data — and I understand technical constraints because I code too. Today I lead design at GameRoom3 Studio and take my games from idea to launch.</span></p>
+
+            <h3 class="mini"><span lang="es">Trayectoria</span><span lang="en">Experience</span></h3>
+            <ul class="timeline">
+              <li>
+                <time><span lang="es">Ene 2025 — hoy</span><span lang="en">Jan 2025 — present</span></time>
+                <span><b>Lead Game Designer &amp; Game Director</b> · GameRoom3 Studio
+                  <small><span lang="es">Visión creativa, concepto, lore, arquitectura de niveles y sistemas de juego para un equipo de 6 personas; coordinación entre arte, diseño y programación.</span><span lang="en">Creative vision, concept, lore, level architecture and gameplay systems for a 6-person team; coordination across art, design and programming.</span></small></span>
+              </li>
+              <li>
+                <time><span lang="es">Oct — dic 2024</span><span lang="en">Oct — Dec 2024</span></time>
+                <span><b>Freelance Game Designer &amp; Developer</b> · <span lang="es">Independiente</span><span lang="en">Independent</span>
+                  <small><span lang="es">Sistemas y mecánicas de juego implementados en colaboración con equipos de ingeniería.</span><span lang="en">Gameplay systems and mechanics implemented in collaboration with engineering teams.</span></small></span>
+              </li>
+              <li>
+                <time><span lang="es">Ene — oct 2024</span><span lang="en">Jan — Oct 2024</span></time>
+                <span><b>Game Designer</b> · Gamium, Barcelona
+                  <small><span lang="es">Diseño y prototipado de funcionalidades y sistemas para un producto en vivo, playtesting con datos de comportamiento y trabajo en Agile (Scrum/Kanban).</span><span lang="en">Design and prototyping of features and systems for a live product, playtesting with behavior data, and Agile (Scrum/Kanban) work.</span></small></span>
+              </li>
+              <li>
+                <time>2020 — 2024</time>
+                <span><b><span lang="es">Grado en Diseño y Desarrollo de Videojuegos</span><span lang="en">BA in Video Game Design and Development</span></b> · CITM
+                  <small>Centre de la Imatge i la Tecnologia Multimèdia</small></span>
+              </li>
+            </ul>
+          </div>
+
+          <aside class="about-side reveal">
+            <h3 class="mini"><span lang="es">Herramientas</span><span lang="en">Tools</span></h3>
+            <ul class="chips">
+              <li class="main">Unity</li><li>Unreal Engine 5</li><li>Blender</li><li>Maya</li><li>3ds Max</li><li>Substance Painter</li>
+              <li>Agile · Scrum / Kanban</li>
+            </ul>
+
+            <h3 class="mini"><span lang="es">Idiomas</span><span lang="en">Languages</span></h3>
+            <ul class="langs">
+              <li><b><span lang="es">Catalán</span><span lang="en">Catalan</span></b><span><span lang="es">Nativo</span><span lang="en">Native</span></span></li>
+              <li><b><span lang="es">Español</span><span lang="en">Spanish</span></b><span><span lang="es">Nativo</span><span lang="en">Native</span></span></li>
+              <li><b><span lang="es">Inglés</span><span lang="en">English</span></b><span><span lang="es">Fluido (nivel profesional)</span><span lang="en">Fluent (professional)</span></span></li>
+            </ul>
+          </aside>
+        </div>
+
+        <div class="duo reveal">
+          <div class="duo-card" style="--c:#ff7a59">
+            <h3>Game Design</h3>
+            <ul>
+              <li><span lang="es">Sistemas, mecánicas y bucle central</span><span lang="en">Systems, mechanics &amp; core loop</span></li>
+              <li><span lang="es">Progresión y balance</span><span lang="en">Progression &amp; balance</span></li>
+              <li><span lang="es">Diseño de niveles y onboarding</span><span lang="en">Level design &amp; onboarding</span></li>
+              <li><span lang="es">Lore, narrativa y documentación</span><span lang="en">Lore, narrative &amp; documentation</span></li>
+            </ul>
+          </div>
+          <div class="duo-card" style="--c:#5eead4">
+            <h3>Game Development</h3>
+            <ul>
+              <li><span lang="es">Gameplay: economía, ítems, misiones y game loop</span><span lang="en">Gameplay: economy, items, quests &amp; game loop</span></li>
+              <li><span lang="es">Prototipado rápido</span><span lang="en">Rapid prototyping</span></li>
+              <li><span lang="es">Diseño atento a la implementación</span><span lang="en">Implementation-aware design</span></li>
+              <li><span lang="es">PC (Steam) y Android</span><span lang="en">PC (Steam) &amp; Android</span></li>
+            </ul>
+          </div>
+          <div class="duo-card" style="--c:#ffcf4a">
+            <h3><span lang="es">Dirección y producción</span><span lang="en">Direction &amp; production</span></h3>
+            <ul>
+              <li><span lang="es">Dirección creativa de un equipo de 6</span><span lang="en">Creative direction of a 6-person team</span></li>
+              <li><span lang="es">Coordinación arte · diseño · programación</span><span lang="en">Art · design · programming coordination</span></li>
+              <li><span lang="es">Playtesting y ciclos de iteración</span><span lang="en">Playtesting &amp; iteration cycles</span></li>
+              <li><span lang="es">Builds, releases y publicación</span><span lang="en">Builds, releases &amp; shipping</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section class="section contact-section" id="contacto">
+      <div class="wrap contact reveal">
+        <p class="eyebrow"><span lang="es">03 · Contacto</span><span lang="en">03 · Contact</span></p>
+        <h2><span lang="es">¿Buscas a un game designer y developer?</span><span lang="en">Looking for a game designer &amp; developer?</span></h2>
+        <p class="lead">
+          <span lang="es">Estoy abierto a nuevas oportunidades. Aquí tienes mi CV y cómo localizarme.</span>
+          <span lang="en">I'm open to new opportunities. Here's my CV and how to reach me.</span>
+        </p>
+
+        <div class="contact-row">
+          <a class="btn primary big" href="cv/Gerard-Catasus-CV.pdf" target="_blank" rel="noopener"><span lang="es">Descargar CV</span><span lang="en">Download CV</span></a>
+          <a class="btn big" id="email-link" href="mailto:gerhoquei8@gmail.com">gerhoquei8@gmail.com</a>
+          <button class="btn big" type="button" id="copy-email" data-copy="gerhoquei8@gmail.com">
+            <span class="when-idle"><span lang="es">Copiar correo</span><span lang="en">Copy email</span></span>
+            <span class="when-done" aria-live="polite"><span lang="es">¡Copiado!</span><span lang="en">Copied!</span></span>
+          </button>
+        </div>
+        <p class="place">El Vendrell (Tarragona), <span lang="es">España</span><span lang="en">Spain</span></p>
+        <ul class="social">
+          <li><a href="https://www.linkedin.com/in/gerard-josep-ram%C3%B3n-catasus-293020227/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Visor ampliado de capturas -->
+  <dialog class="lightbox" id="lightbox" aria-label="Visor de capturas / Screenshot viewer">
+    <button class="lb-btn lb-close" type="button" aria-label="Cerrar / Close">✕</button>
+    <button class="lb-btn lb-prev" type="button" aria-label="Anterior / Previous">‹</button>
+    <figure>
+      <img id="lb-img" alt="">
+      <figcaption id="lb-cap"></figcaption>
+    </figure>
+    <button class="lb-btn lb-next" type="button" aria-label="Siguiente / Next">›</button>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© <span id="year">2026</span> Gerard Josep Ramon Catasus · <span lang="es">Hecho a mano con HTML, CSS y JavaScript.</span><span lang="en">Handmade with HTML, CSS and JavaScript.</span></p>
+      <a href="#top"><span lang="es">Volver arriba ↑</span><span lang="en">Back to top ↑</span></a>
+    </div>
+  </footer>
+</body>
+</html>
